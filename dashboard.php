@@ -18,10 +18,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $id = $_POST['id'] ?? '';
     $namakamar = $_POST['namakamar'];
     $deskripsi = $_POST['deskripsi'];
-    $image = $_POST['image'];
+
+    // Upload Gambar
+    $image = '';
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        $targetDir = "uploads/";
+        $image = $targetDir . basename($_FILES['image']['name']);
+        move_uploaded_file($_FILES['image']['tmp_name'], $image);
+    }
 
     if ($id) {
-        $query = "UPDATE datakamar SET namakamar='$namakamar', deskripsi='$deskripsi', image='$image' WHERE id=$id";
+        if ($image) {
+            $query = "UPDATE datakamar SET namakamar='$namakamar', deskripsi='$deskripsi', image='$image' WHERE id=$id";
+        } else {
+            $query = "UPDATE datakamar SET namakamar='$namakamar', deskripsi='$deskripsi' WHERE id=$id";
+        }
     } else {
         $query = "INSERT INTO datakamar (namakamar, deskripsi, image) VALUES ('$namakamar', '$deskripsi', '$image')";
     }
@@ -64,7 +75,7 @@ if ($action === 'delete' && isset($_GET['id'])) {
     <div class="card mb-4">
         <div class="card-header">CRUD Data Kamar</div>
         <div class="card-body">
-            <form method="POST" action="" class="row g-3">
+            <form method="POST" action="" enctype="multipart/form-data" class="row g-3">
                 <input type="hidden" name="id" value="<?= $_GET['id'] ?? '' ?>">
                 <div class="col-md-4">
                     <label for="namakamar" class="form-label">Nama Kamar</label>
@@ -75,8 +86,8 @@ if ($action === 'delete' && isset($_GET['id'])) {
                     <textarea class="form-control" id="deskripsi" name="deskripsi" rows="2" required></textarea>
                 </div>
                 <div class="col-md-4">
-                    <label for="image" class="form-label">URL Gambar</label>
-                    <input type="text" class="form-control" id="image" name="image">
+                    <label for="image" class="form-label">Upload Gambar</label>
+                    <input type="file" class="form-control" id="image" name="image">
                 </div>
                 <div class="col-12">
                     <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
