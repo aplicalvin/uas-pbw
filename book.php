@@ -55,6 +55,10 @@
             <input type="number" placeholder="Masukan no hp" name="phone">
         </div>
         <div class="inputBox">
+            <span>Kota Asal :</span>
+            <input type="number" placeholder="Masukkan Kota Asal Anda" name="location">
+        </div>
+        <div class="inputBox">
             <span>Tanggal masuk :</span>
             <input type="date" name="masuk">
         </div>
