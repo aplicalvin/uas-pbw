@@ -3,165 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>package</title>
+    <title>Package</title>
 
-    <!-- swiper css link -->
+    <!-- Swiper CSS Link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
-    <!-- font awesome cdn link -->
+    <!-- Font Awesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-     <!-- custom css file link -->
-      <link rel="stylesheet" href="css/style.css">
+    <!-- Custom CSS File Link -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-        <!-- header section starts -->
-        <?php
-            include('components/navbar.php');
-        ?>
-        <!-- header section end -->
-    
+<!-- Header Section -->
+<?php include('components/navbar.php'); ?>
+
+<!-- Heading Section -->
 <div class="heading" style="background:url(images/header2.jpg) no-repeat">
-    <h1>packages</h1>
+    <h1>Packages</h1>
 </div>
- <!-- Packages section awal -->
- <section class="packages">
-    <h1 class="heading-title">Top bedroom</h1>
+
+<!-- Packages Section -->
+<section class="packages">
+    <h1 class="heading-title">Top Bedroom</h1>
     <div class="box-container">
-        <div class="box">
-            <div class="image">
-                <img src="images/kos4-2.jpg" alt="" height="500">
-            </div>
-            <div class="content">
-                <h3>Kos murah dan bagus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem omnis et esse ipsam aliquam?</p>
-                <a href="book.php" class="btn">Book now</a>
-            </div>
-        </div>
+        <?php
+        // Step 1: Connect to the database
+        $servername = "localhost";
+        $username = "root"; // Change this to your database username
+        $password = "simbolon"; // Change this to your database password
+        $dbname = "booking_kos"; // Change this to your database name
 
-        <div class="box">
-            <div class="image">
-                <img src="images/kos3.jpg" alt="" height="500">
-            </div>
-            <div class="content">
-                <h3>Kos murah dan bagus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem omnis et esse ipsam aliquam?</p>
-                <a href="book.php" class="btn">Book now</a>
-            </div>
-        </div>
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-        <div class="box">
-            <div class="image">
-                <img src="images/kos8.jpg" alt="" height="500">
-            </div>
-            <div class="content">
-                <h3>Kos murah dan bagus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem omnis et esse ipsam aliquam?</p>
-                <a href="book.php" class="btn">Book now</a>
-            </div>
-        </div>
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-        <div class="box">
-            <div class="image">
-                <img src="images/kos5.jpg" alt="" height="500">
-            </div>
-            <div class="content">
-                <h3>Kos murah dan bagus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem omnis et esse ipsam aliquam?</p>
-                <a href="book.php" class="btn">Book now</a>
-            </div>
-        </div>
+        // Step 2: Query the database for room data
+        $sql = "SELECT id, namakamar, deskripsi, image FROM datakamar";
+        $result = $conn->query($sql);
 
-        <div class="box">
-            <div class="image">
-                <img src="images/kos1.jpg" alt="" height="500">
-            </div>
-            <div class="content">
-                <h3>Kos murah dan bagus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem omnis et esse ipsam aliquam?</p>
-                <a href="book.php" class="btn">Book now</a>
-            </div>
-        </div>
+        // Step 3: Loop through the results and generate HTML for each room
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo '
+                <div class="box">
+                    <div class="image">
+                        <img src="' . $row['image'] . '" alt="" height="500">
+                    </div>
+                    <div class="content">
+                        <h3>' . $row['namakamar'] . '</h3>
+                        <p>' . $row['deskripsi'] . '</p>
+                        <a href="book.php?id=' . $row['id'] . '" class="btn">Book Now</a>
+                    </div>
+                </div>';
+            }
+        } else {
+            echo "No rooms available.";
+        }
 
-        <div class="box">
-            <div class="image">
-                <img src="images/kos7-2.jpg" alt="" height="500">
-            </div>
-            <div class="content">
-                <h3>Kos murah dan bagus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem omnis et esse ipsam aliquam?</p>
-                <a href="book.php" class="btn">Book now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/kos9.jpg" alt="" height="500">
-            </div>
-            <div class="content">
-                <h3>Kos murah dan bagus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem omnis et esse ipsam aliquam?</p>
-                <a href="book.php" class="btn">Book now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/kos6.jpg" alt="" height="500">
-            </div>
-            <div class="content">
-                <h3>Kos murah dan bagus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem omnis et esse ipsam aliquam?</p>
-                <a href="book.php" class="btn">Book now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/kos2-2.jpg" alt="" height="500">
-            </div>
-            <div class="content">
-                <h3>Kos murah dan bagus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem omnis et esse ipsam aliquam?</p>
-                <a href="book.php" class="btn">Book now</a>
-            </div>
-        </div>
+        // Step 4: Close the connection
+        $conn->close();
+        ?>
     </div>
-    <div class="load-more"><span class="btn">load more</span></div>
-  </section>
- <!-- Packages section akhir -->
 
+    <div class="load-more"><span class="btn">Load More</span></div>
+</section>
 
+<!-- Footer Section -->
+<?php include('components/footer.php'); ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php 
-    include('components/footer.php');
-?>
-
-
-<!-- swiper js link -->
+<!-- Swiper JS Link -->
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
-<!-- custom js file link -->
- <script src="js/script.js"></script>
-
+<!-- Custom JS File Link -->
+<script src="js/script.js"></script>
 
 </body>
 </html>
