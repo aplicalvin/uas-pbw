@@ -32,22 +32,25 @@
         </div>
     <div class="content">
         <h3>Why Chose Us?</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum maiores sed error dignissimos molestias nam quod quis, aspernatur, unde veniam non placeat ex obcaecati blanditiis odit fugiat illum sapiente corrupti!</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem maiores odit, velit quis aliquam doloribus incidunt eius maxime doloremque nobis impedit, amet ex, reprehenderit itaque quae similique at ab? Reprehenderit.</p>
+        <p>Tempat kami menyediakan kenyamanan dan keamanan bagi para penghuni dengan fasilitas lengkap dan harga yang bersaing. Kost kami didesain untuk memenuhi kebutuhan para penghuni yang mencari tempat tinggal dengan lingkungan yang tenang dan bersih. Dilengkapi dengan layanan 24 jam dan ruang yang nyaman, kami berkomitmen untuk memberikan pengalaman terbaik bagi setiap tamu.</p>
+
+<p>Kami memiliki berbagai pilihan kamar yang dapat disesuaikan dengan kebutuhan Anda. Mulai dari kamar standar hingga yang lebih luas dengan fasilitas modern. Kami memahami pentingnya kenyamanan dan keamanan, dan berusaha untuk memastikan Anda merasa seperti di rumah sendiri selama menginap di sini.</p>
+
         <div class="icons-container">
             <div class="icons">
                 <i class="fas fa-users">
-                    <span>Top Boarding House</span>
+                <span>Kost dengan Fasilitas Lengkap</span>
+
                 </i>
             </div>
             <div class="icons">
                 <i class="fas fa-hand-holding-usd">
-                    <span>Affordable price</span>
+                <span>Harga Terjangkau</span>
                 </i>
             </div>
             <div class="icons">
                 <i class="fas fa-headset">
-                    <span>24/7 Guide service</span>
+                <span>Layanan 24/7</span>
                 </i>
             </div>
         </div>

@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 
     if ($conn->query($query) === TRUE) {
-        header('Location: index.php');
+        header('Location: dashboard.php');
         exit;
     } else {
         echo "Error: " . $conn->error;
@@ -50,7 +50,7 @@ if ($action === 'delete' && isset($_GET['id'])) {
     $id = $_GET['id'];
     $query = "DELETE FROM datakamar WHERE id=$id";
     if ($conn->query($query) === TRUE) {
-        header('Location: index.php');
+        header('Location: dashboard.php');
         exit;
     } else {
         echo "Error: " . $conn->error;

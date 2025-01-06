@@ -106,12 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                         />
                     </div>
 
-                    <input
-                        type="submit"
-                        value="Masuk"
-                        class="btn"
-                        name="login"
-                    />
+
+                    <a href="dashboard.php" class="btn" style="text-align: center">Masuk</a>
                 </form>
             </div>
 
